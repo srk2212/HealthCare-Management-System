@@ -4,22 +4,22 @@ from tkinter import ttk
 from tkinter import font
 import sqlite3
 
-# Database connection
-DB_NAME = "HospitalDB.db"
+# database connection
+DB_NAME = "HOSPITAL_DB"
 
-# Establish a connection to the database
+# establish a connection to the database
 def get_db_connection():
     return sqlite3.connect(DB_NAME)
 
-# Create a cursor object
+# create a cursor object
 def get_cursor(conn):
     return conn.cursor()
 
-# Close the connection
+# close the connection
 def close_connection(conn):
     conn.close()
 
-class Employee:
+class EmployeeRegistrationForm:
     def __init__(self, master):
         self.master = master
         self.master.title("HOSPITAL MANAGEMENT SYSTEM")
@@ -29,101 +29,101 @@ class Employee:
         self.frame.pack()
 
         # =============ATTRIBUTES===========
-        self.emp_ID = StringVar()
-        self.emp_name = StringVar()
-        self.emp_sex = StringVar()
-        self.emp_age = IntVar()
-        self.emp_type = StringVar()
-        self.emp_salary = IntVar()
-        self.emp_exp = StringVar()
-        self.emp_email = StringVar()
-        self.emp_phno = IntVar()
+        self.employee_id = StringVar()
+        self.employee_name = StringVar()
+        self.employee_sex = StringVar()
+        self.employee_age = IntVar()
+        self.employee_type = StringVar()
+        self.employee_salary = IntVar()
+        self.employee_experience = StringVar()
+        self.employee_email = StringVar()
+        self.employee_phone_number = IntVar()
 
         # ===============TITLE==========
-        self.lblTitle = Label(self.frame, text="EMPLOYEE REGISTRATION FORM", font="Helvetica 20 bold", bg="cadet blue")
-        self.lblTitle.grid(row=0, column=0, columnspan=4, pady=50)
+        self.title_label = Label(self.frame, text="EMPLOYEE REGISTRATION FORM", font="Helvetica 20 bold", bg="cadet blue")
+        self.title_label.grid(row=0, column=0, columnspan=4, pady=50)
         # ==============FRAME==========
-        self.LoginFrame = Frame(self.frame, width=800, height=200, relief="ridge", bg="cadet blue", bd=20)
-        self.LoginFrame.grid(row=1, column=0)
+        self.registration_frame = Frame(self.frame, width=800, height=200, relief="ridge", bg="cadet blue", bd=20)
+        self.registration_frame.grid(row=1, column=0)
 
-        self.LoginFrame2 = Frame(self.frame, width=400, height=80, relief="ridge", bg="cadet blue", bd=20)
-        self.LoginFrame2.grid(row=2, column=0)
+        self.button_frame = Frame(self.frame, width=400, height=80, relief="ridge", bg="cadet blue", bd=20)
+        self.button_frame.grid(row=2, column=0)
         # ===========LABELS=============
-        self.lblempid = Label(self.LoginFrame, text="EMPLOYEE ID", font="Helvetica 14 bold", bg="cadet blue", bd=22)
-        self.lblempid.grid(row=0, column=0)
-        self.empid_entry = Entry(self.LoginFrame, font="Helvetica 14 bold", bd=2, textvariable=self.emp_ID)
-        self.empid_entry.grid(row=0, column=1)
+        self.employee_id_label = Label(self.registration_frame, text="EMPLOYEE ID", font="Helvetica 14 bold", bg="cadet blue", bd=22)
+        self.employee_id_label.grid(row=0, column=0)
+        self.employee_id_entry = Entry(self.registration_frame, font="Helvetica 14 bold", bd=2, textvariable=self.employee_id)
+        self.employee_id_entry.grid(row=0, column=1)
 
-        self.lblempname = Label(self.LoginFrame, text="EMPLOYEE NAME", font="Helvetica 14 bold", bg="cadet blue", bd=22)
-        self.lblempname.grid(row=1, column=0)
-        self.empname_entry = Entry(self.LoginFrame, font="Helvetica 14 bold", bd=2, textvariable=self.emp_name)
-        self.empname_entry.grid(row=1, column=1)
+        self.employee_name_label = Label(self.registration_frame, text="EMPLOYEE NAME", font="Helvetica 14 bold", bg="cadet blue", bd=22)
+        self.employee_name_label.grid(row=1, column=0)
+        self.employee_name_entry = Entry(self.registration_frame, font="Helvetica 14 bold", bd=2, textvariable=self.employee_name)
+        self.employee_name_entry.grid(row=1, column=1)
 
-        self.lblsex = Label(self.LoginFrame, text="SEX", font="Helvetica 14 bold", bg="cadet blue", bd=22)
-        self.lblsex.grid(row=2, column=0)
-        self.sex_entry = Entry(self.LoginFrame, font="Helvetica 14 bold", bd=2, textvariable=self.emp_sex)
+        self.sex_label = Label(self.registration_frame, text="SEX", font="Helvetica 14 bold", bg="cadet blue", bd=22)
+        self.sex_label.grid(row=2, column=0)
+        self.sex_entry = Entry(self.registration_frame, font="Helvetica 14 bold", bd=2, textvariable=self.employee_sex)
         self.sex_entry.grid(row=2, column=1)
 
-        self.lblage = Label(self.LoginFrame, text="AGE", font="Helvetica 14 bold", bg="cadet blue", bd=22)
-        self.lblage.grid(row=3, column=0)
-        self.age_entry = Entry(self.LoginFrame, font="Helvetica 14 bold", bd=2, textvariable=self.emp_age)
+        self.age_label = Label(self.registration_frame, text="AGE", font="Helvetica 14 bold", bg="cadet blue", bd=22)
+        self.age_label.grid(row=3, column=0)
+        self.age_entry = Entry(self.registration_frame, font="Helvetica 14 bold", bd=2, textvariable=self.employee_age)
         self.age_entry.grid(row=3, column=1)
 
-        self.etype1 = Label(self.LoginFrame, text="EMPLOYEE DESIGNATION", font="Helvetica 14 bold", bg="cadet blue", bd=22)
-        self.etype1.grid(row=4, column=0)
-        self.type_entry = Entry(self.LoginFrame, font="Helvetica 14 bold", bd=2, textvariable=self.emp_type)
-        self.type_entry.grid(row=4, column=1)
+        self.employee_type_label = Label(self.registration_frame, text="EMPLOYEE DESIGNATION", font="Helvetica 14 bold", bg="cadet blue", bd=22)
+        self.employee_type_label.grid(row=4, column=0)
+        self.employee_type_entry = Entry(self.registration_frame, font="Helvetica 14 bold", bd=2, textvariable=self.employee_type)
+        self.employee_type_entry.grid(row=4, column=1)
 
-        self.lblCon = Label(self.LoginFrame, text="SALARY", font="Helvetica 14 bold", bg="cadet blue", bd=22)
-        self.lblCon.grid(row=0, column=2)
-        self.salary_entry = Entry(self.LoginFrame, font="Helvetica 14 bold", bd=2, textvariable=self.emp_salary)
+        self.salary_label = Label(self.registration_frame, text="SALARY", font="Helvetica 14 bold", bg="cadet blue", bd=22)
+        self.salary_label.grid(row=0, column=2)
+        self.salary_entry = Entry(self.registration_frame, font="Helvetica 14 bold", bd=2, textvariable=self.employee_salary)
         self.salary_entry.grid(row=0, column=3)
 
-        self.lblAlt = Label(self.LoginFrame, text="EXPERIENCE", font="Helvetica 14 bold", bg="cadet blue", bd=22)
-        self.lblAlt.grid(row=1, column=2)
-        self.exp_entry = Entry(self.LoginFrame, font="Helvetica 14 bold", bd=2, textvariable=self.emp_exp)
-        self.exp_entry.grid(row=1, column=3)
+        self.experience_label = Label(self.registration_frame, text="EXPERIENCE", font="Helvetica 14 bold", bg="cadet blue", bd=22)
+        self.experience_label.grid(row=1, column=2)
+        self.experience_entry = Entry(self.registration_frame, font="Helvetica 14 bold", bd=2, textvariable=self.employee_experience)
+        self.experience_entry.grid(row=1, column=3)
 
-        self.lbleid = Label(self.LoginFrame, text="CONTACT NUMBER", font="Helvetica 14 bold", bg="cadet blue", bd=22)
-        self.lbleid.grid(row=2, column=2)
-        self.phno_entry = Entry(self.LoginFrame, font="Helvetica 14 bold", bd=2, textvariable=self.emp_phno)
-        self.phno_entry.grid(row=2, column=3)
+        self.phone_number_label = Label(self.registration_frame, text="CONTACT NUMBER", font="Helvetica 14 bold", bg="cadet blue", bd=22)
+        self.phone_number_label.grid(row=2, column=2)
+        self.phone_number_entry = Entry(self.registration_frame, font="Helvetica 14 bold", bd=2, textvariable=self.employee_phone_number)
+        self.phone_number_entry.grid(row=2, column=3)
 
-        self.lbleid = Label(self.LoginFrame, text="EMAIL", font="Helvetica 14 bold", bg="cadet blue", bd=22)
-        self.lbleid.grid(row=3, column=2)
-        self.email_entry = Entry(self.LoginFrame, font="Helvetica 14 bold", bd=2, textvariable=self.emp_email)
+        self.email_label = Label(self.registration_frame, text="EMAIL", font="Helvetica 14 bold", bg="cadet blue", bd=22)
+        self.email_label.grid(row=3, column=2)
+        self.email_entry = Entry(self.registration_frame, font="Helvetica 14 bold", bd=2, textvariable=self.employee_email)
         self.email_entry.grid(row=3, column=3)
 
-        self.button2 = Button(self.LoginFrame2, text="SAVE", width=10, font="Helvetica 14 bold", bg="cadet blue",
-                              command=self.insert_employee)
-        self.button2.grid(row=0, column=1)
+        self.save_button = Button(self.button_frame, text="SAVE", width=10, font="Helvetica 14 bold", bg="cadet blue",
+                                  command=self.insert_employee)
+        self.save_button.grid(row=0, column=1)
 
-        self.button3 = Button(self.LoginFrame2, text="DELETE", width=10, font="Helvetica 14 bold", bg="cadet blue",
-                              command=self.delete_employee)
-        self.button3.grid(row=0, column=2)
+        self.delete_button = Button(self.button_frame, text="DELETE", width=10, font="Helvetica 14 bold", bg="cadet blue",
+                                    command=self.delete_employee)
+        self.delete_button.grid(row=0, column=2)
 
-        self.button6 = Button(self.LoginFrame2, text="EXIT", width=10, font="Helvetica 14 bold", bg="cadet blue",
-                              command=self.exit)
-        self.button6.grid(row=0, column=3)
+        self.exit_button = Button(self.button_frame, text="EXIT", width=10, font="Helvetica 14 bold", bg="cadet blue",
+                                  command=self.exit_application)
+        self.exit_button.grid(row=0, column=3)
 
     def insert_employee(self):
         conn = get_db_connection()
         cursor = get_cursor(conn)
-        e1 = self.emp_ID.get()
-        e2 = self.emp_name.get()
-        e3 = self.emp_sex.get()
-        e4 = self.emp_age.get()
-        e5 = self.emp_type.get()
-        e6 = self.emp_salary.get()
-        e7 = self.emp_exp.get()
-        e8 = self.emp_email.get()
-        e9 = self.emp_phno.get()
-        cursor.execute("SELECT * FROM employee WHERE EMP_ID = ?", (e1,))
-        p = cursor.fetchall()
-        if len(p) != 0:
+        employee_id = self.employee_id.get()
+        employee_name = self.employee_name.get()
+        employee_sex = self.employee_sex.get()
+        employee_age = self.employee_age.get()
+        employee_type = self.employee_type.get()
+        employee_salary = self.employee_salary.get()
+        employee_experience = self.employee_experience.get()
+        employee_email = self.employee_email.get()
+        employee_phone_number = self.employee_phone_number.get()
+        cursor.execute("SELECT * FROM employee WHERE EMP_ID = ?", (employee_id,))
+        result = cursor.fetchall()
+        if len(result) != 0:
             tkinter.messagebox.showerror("HOSPITAL DATABASE SYSTEM", "EMPLOYEE ID ALREADY EXISTS")
         else:
-            cursor.execute("INSERT INTO employee VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", (e1, e2, e3, e4, e5, e6, e7, e8, e9))
+            cursor.execute("INSERT INTO employee VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", (employee_id, employee_name, employee_sex, employee_age, employee_type, employee_salary, employee_experience, employee_email, employee_phone_number))
             tkinter.messagebox.showinfo("HOSPITAL DATABASE SYSTEM", "EMPLOYEE DATA ADDED")
         conn.commit()
         close_connection(conn)
@@ -132,7 +132,7 @@ class Employee:
         self.new_window = Toplevel(self.master)
         self.app = DeleteEmployee(self.new_window)
 
-    def exit(self):
+    def exit_application(self):
         self.master.destroy()
 
 
@@ -144,33 +144,33 @@ class DeleteEmployee:
         self.master.config(bg="cadet blue")
         self.frame = Frame(self.master, bg="cadet blue")
         self.frame.pack()
-        self.de1_emp = StringVar()
-        self.lblTitle = Label(self.frame, text="DELETE EMPLOYEE WINDOW", font="Helvetica 20 bold", bg="cadet blue")
-        self.lblTitle.grid(row=0, column=0, columnspan=2, pady=50)
+        self.employee_id_to_delete = StringVar()
+        self.title_label = Label(self.frame, text="DELETE EMPLOYEE WINDOW", font="Helvetica 20 bold", bg="cadet blue")
+        self.title_label.grid(row=0, column=0, columnspan=2, pady=50)
         # ==============FRAME==========
-        self.LoginFrame = Frame(self.frame, width=400, height=80, relief="ridge", bg="cadet blue", bd=20)
-        self.LoginFrame.grid(row=1, column=0)
-        self.LoginFrame2 = Frame(self.frame, width=400, height=80, relief="ridge", bg="cadet blue", bd=20)
-        self.LoginFrame2.grid(row=2, column=0)
+        self.delete_frame = Frame(self.frame, width=400, height=80, relief="ridge", bg="cadet blue", bd=20)
+        self.delete_frame.grid(row=1, column=0)
+        self.button_frame = Frame(self.frame, width=400, height=80, relief="ridge", bg="cadet blue", bd=20)
+        self.button_frame.grid(row=2, column=0)
         # ===========LABELS=============
-        self.lblpatid = Label(self.LoginFrame, text="ENTER EMPLOYEE ID TO DELETE", font="Helvetica 14 bold", bg="cadet blue",
+        self.employee_id_label = Label(self.delete_frame, text="ENTER EMPLOYEE ID TO DELETE", font="Helvetica 14 bold", bg="cadet blue",
                               bd=22)
-        self.lblpatid.grid(row=0, column=0)
-        self.empid_entry = Entry(self.LoginFrame, font="Helvetica 14 bold", bd=2, textvariable=self.de1_emp)
-        self.empid_entry.grid(row=0, column=1)
+        self.employee_id_label.grid(row=0, column=0)
+        self.employee_id_entry = Entry(self.delete_frame, font="Helvetica 14 bold", bd=2, textvariable=self.employee_id_to_delete)
+        self.employee_id_entry.grid(row=0, column=1)
 
-        self.DeleteB = Button(self.LoginFrame2, text="DELETE", width=10, font="Helvetica 14 bold", bg="cadet blue",
-                               command=self.delete_employee)
-        self.DeleteB.grid(row=0, column=1)
+        self.delete_button = Button(self.button_frame, text="DELETE", width=10, font="Helvetica 14 bold", bg="cadet blue",
+                               command=self.delete_employee_from_database)
+        self.delete_button.grid(row=0, column=1)
 
-    def delete_employee(self):
+    def delete_employee_from_database(self):
         conn = get_db_connection()
         cursor = get_cursor(conn)
-        de = self.de1_emp.get()
-        cursor.execute("SELECT * FROM employee WHERE EMP_ID = ?", (de,))
-        p = cursor.fetchall()
-        if len(p) != 0:
-            cursor.execute("DELETE FROM employee WHERE EMP_ID = ?", (de,))
+        employee_id = self.employee_id_to_delete.get()
+        cursor.execute("SELECT * FROM employee WHERE EMP_ID = ?", (employee_id,))
+        result = cursor.fetchall()
+        if len(result) != 0:
+            cursor.execute("DELETE FROM employee WHERE EMP_ID = ?", (employee_id,))
             tkinter.messagebox.showinfo("HOSPITAL DATABASE SYSTEM", "EMPLOYEE DATA DELETED")
         else:
             tkinter.messagebox.showerror("HOSPITAL DATABASE SYSTEM", "EMPLOYEE DATA DOESN'T EXIST")
@@ -179,5 +179,5 @@ class DeleteEmployee:
 
 
 root = Tk()
-my_gui = Employee(root)
+my_gui = EmployeeRegistrationForm(root)
 root.mainloop()

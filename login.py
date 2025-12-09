@@ -5,65 +5,65 @@ from tkinter import font
 
 from menu import Menu
 
-def main():
+def main_function():
     root = Tk()
-    app= MainWindow(root)
-#MAIN WINDOW FOR LOG IN
-class MainWindow:
+    app = main_window(root)
+
+class Main_Window:
     # constructor
-    def __init__(self,master):
-        # public data mambers
+    def __init__(self, master):
+        # public data members
         self.master = master
         self.master.title("HOSPITAL MANAGEMENT SYSTEM")
         self.master.geometry("800x500+0+0")
         self.master.config(bg="powder blue")
-        self.frame = Frame(self.master,bg="powder blue")
+        self.frame = Frame(self.master, bg="powder blue")
         self.frame.pack()
 
-        self.Username = StringVar()
-        self.Password = StringVar()
+        self.username = StringVar()
+        self.password = StringVar()
 
-        self.lblTitle = Label(self.frame,text = "HOSPITAL MANAGEMENT SYSTEM", font="Helvetica 20 bold",bg="powder blue",fg="black")
-        self.lblTitle.grid(row =0 ,column = 0,columnspan=2,pady=40)
+        self.lbl_title = Label(self.frame, text="HOSPITAL MANAGEMENT SYSTEM", font="Helvetica 20 bold", bg="powder blue", fg="black")
+        self.lbl_title.grid(row=0, column=0, columnspan=2, pady=40)
         #======================
-        self.LoginFrame1 = Frame(self.frame,width=400,height=80,relief="ridge",bg="cadet blue",bd=20)
-        self.LoginFrame1.grid(row=1,column=0)
-        self.LoginFrame2 = Frame(self.frame,width=400,height=80,relief="ridge",bg="cadet blue",bd=20)
-        self.LoginFrame2.grid(row=2,column=0)
+        self.login_frame1 = Frame(self.frame, width=400, height=80, relief="ridge", bg="cadet blue", bd=20)
+        self.login_frame1.grid(row=1, column=0)
+        self.login_frame2 = Frame(self.frame, width=400, height=80, relief="ridge", bg="cadet blue", bd=20)
+        self.login_frame2.grid(row=2, column=0)
         #======LABEL AND ENTRY=========
-        self.lblUsername = Label(self.LoginFrame1,text="Username",font="Helvetica 14 bold",bg="cadet blue",bd=22)
-        self.lblUsername.grid(row=0,column=0)
-        self.lblUsername = Entry(self.LoginFrame1,font="Helvetica 14 bold",textvariable= self.Username,bd=2)
-        self.lblUsername.grid(row=0,column=1)
-        self.lblPassword = Label(self.LoginFrame1,text="Password ",font="Helvetica 14 bold",bg="cadet blue",bd=22)
-        self.lblPassword .grid(row=1,column=0)
-        self.lblPassword  = Entry(self.LoginFrame1,font="Helvetica 14 bold",show="*",textvariable= self.Password,bd=2)
-        self.lblPassword .grid(row=1,column=1)
+        self.lbl_username = Label(self.login_frame1, text="Username", font="Helvetica 14 bold", bg="cadet blue", bd=22)
+        self.lbl_username.grid(row=0, column=0)
+        self.entry_username = Entry(self.login_frame1, font="Helvetica 14 bold", textvariable=self.username, bd=2)
+        self.entry_username.grid(row=0, column=1)
+        self.lbl_password = Label(self.login_frame1, text="Password ", font="Helvetica 14 bold", bg="cadet blue", bd=22)
+        self.lbl_password.grid(row=1, column=0)
+        self.entry_password = Entry(self.login_frame1, font="Helvetica 14 bold", show="*", textvariable=self.password, bd=2)
+        self.entry_password.grid(row=1, column=1)
         #===========BUTTONS====
-        self.btnLogin = Button(self.LoginFrame2,text = "Login" ,font="Helvetica 10 bold", width =10 ,bg="powder blue",command = self.Login_system)
-        self.btnLogin.grid(row=3,column=0)
-        self.btnExit = Button(self.LoginFrame2,text = "Exit" ,font="Helvetica 10 bold", width =10 ,bg="powder blue",command = self.Exit)
-        self.btnExit.grid(row=3,column=1)
+        self.btn_login = Button(self.login_frame2, text="Login", font="Helvetica 10 bold", width=10, bg="powder blue", command=self.login_system)
+        self.btn_login.grid(row=3, column=0)
+        self.btn_exit = Button(self.login_frame2, text="Exit", font="Helvetica 10 bold", width=10, bg="powder blue", command=self.exit_function)
+        self.btn_exit.grid(row=3, column=1)
+
     # public member function  
     #Function for LOGIN
-    def Login_system(self):
-
-        S1=(self.Username.get())
-        S2=(self.Password.get())
-        if(S1=='admin' and S2=='1234'):
-            self.newWindow = Toplevel(self.master)
-            self.app = Menu(self.newWindow)
-        elif(S1=='root' and S2=='4321'):
-            self.newWindow = Toplevel(self.master)
-            self.app = Menu(self.newWindow)
+    def login_system(self):
+        USERNAME = 'admin'
+        PASSWORD = 'password123'
+        S1 = (self.username.get())
+        S2 = (self.password.get())
+        if(S1 == USERNAME and S2 == PASSWORD):
+            self.new_window = Toplevel(self.master)
+            self.app = Menu(self.new_window)
+        elif(S1 == 'root' and S2 == 'password123'):
+            self.new_window = Toplevel(self.master)
+            self.app = Menu(self.new_window)
         else:
-            tkinter.messagebox.askretrycancel("HOSPITAL MANAGEMENT SYSTEM" , "PLEASE ENTER VALID USERNAME AND PASSWORD")
+            tkinter.messagebox.askretrycancel("HOSPITAL MANAGEMENT SYSTEM", "PLEASE ENTER VALID USERNAME AND PASSWORD")
+
     #Function for Exit
-    def Exit(self):
+    def exit_function(self):
         self.master.destroy()
 
-
-
-
 if __name__ == "__main__":
-    main()
+    main_function()
