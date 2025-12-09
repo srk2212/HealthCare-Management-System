@@ -25,7 +25,7 @@ class Appointment:
         self.lblTitle = Label(self.frame, text="APPOINTMENT FORM", font="Helvetica 20 bold", bg="cadet blue")
         self.lblTitle.grid(row=0, column=0, columnspan=2, pady=50)
         # ===============FRAME==========
-        self.LoginFrame = Frame(self.frame, width=400, height=80, relief="ridge", bg="cadet blue", bd=20)
+        self.LoginFrame = Frame(self.frame, width=800, height=200, relief="ridge", bg="cadet blue", bd=20)
         self.LoginFrame.grid(row=1, column=0)
         self.LoginFrame2 = Frame(self.frame, width=400, height=80, relief="ridge", bg="cadet blue", bd=20)
         self.LoginFrame2.grid(row=2, column=0)
@@ -63,19 +63,19 @@ class Appointment:
         # ============BUTTONS=============
         self.button2 = Button(self.LoginFrame2, text="SAVE", width=10, font="Helvetica 14 bold", bg="cadet blue",
                                command=self.insert_ap)
-        self.button2.grid(row=3, column=1)
+        self.button2.grid(row=0, column=1)
 
         self.button3 = Button(self.LoginFrame2, text="DELETE", width=10, font="Helvetica 14 bold", bg="cadet blue",
                              command=self.delete_ap_display)
-        self.button3.grid(row=3, column=2)
+        self.button3.grid(row=0, column=2)
 
         self.button4 = Button(self.LoginFrame2, text="SEARCH APPOINTMENTS", width=20, font="Helvetica 14 bold", bg="cadet blue",
                               command=self.search_ap_display)
-        self.button4.grid(row=3, column=3)
+        self.button4.grid(row=0, column=3)
 
         self.button6 = Button(self.LoginFrame2, text="EXIT", width=10, font="Helvetica 14 bold", bg="cadet blue",
                              command=self.exit)
-        self.button6.grid(row=3, column=4)
+        self.button6.grid(row=0, column=4)
 
     def exit(self):
         self.master.destroy()
@@ -137,7 +137,7 @@ class DeleteAP:
 
         self.DeleteB = Button(self.LoginFrame2, text="DELETE", width=10, font="Helvetica 14 bold", bg="cadet blue",
                               command=self.delete_ap)
-        self.DeleteB.grid(row=3, column=1)
+        self.DeleteB.grid(row=0, column=1)
 
     def delete_ap(self):
         try:
@@ -169,7 +169,7 @@ class SearchAP:
         self.lblTitle = Label(self.frame, text="SEARCH APPOINTMENT WINDOW", font="Helvetica 20 bold", bg="cadet blue")
         self.lblTitle.grid(row=0, column=0, columnspan=2, pady=25)
 
-        self.LoginFrame = Frame(self.frame, width=400, height=80, relief="ridge", bg="cadet blue", bd=20)
+        self.LoginFrame = Frame(self.frame, width=400, height=200, relief="ridge", bg="cadet blue", bd=20)
         self.LoginFrame.grid(row=1, column=0)
 
         self.LoginFrame2 = Frame(self.frame, width=400, height=80, relief="ridge", bg="cadet blue", bd=20)
