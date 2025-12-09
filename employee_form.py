@@ -95,7 +95,7 @@ class EmployeeRegistrationForm:
         self.email_entry.grid(row=3, column=3)
 
         self.save_button = Button(self.button_frame, text="SAVE", width=10, font="Helvetica 14 bold", bg="cadet blue",
-                                  command=self.insert_employee)
+                                  command=self.insert_employee_data)
         self.save_button.grid(row=0, column=1)
 
         self.delete_button = Button(self.button_frame, text="DELETE", width=10, font="Helvetica 14 bold", bg="cadet blue",
@@ -106,7 +106,7 @@ class EmployeeRegistrationForm:
                                   command=self.exit_application)
         self.exit_button.grid(row=0, column=3)
 
-    def insert_employee(self):
+    def insert_employee_data(self):
         conn = get_db_connection()
         cursor = get_cursor(conn)
         employee_id = self.employee_id.get()

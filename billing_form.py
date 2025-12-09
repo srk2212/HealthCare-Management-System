@@ -89,7 +89,8 @@ class BillingClass:
                 cursor = conn.cursor()
                 patient_id = self.patient_id.get()
                 discharge_date = self.discharge_date.get()
-                cursor.execute("UPDATE ROOM SET DATE_DISCHARGED=? WHERE PATIENT_ID=?", (discharge_date, patient_id))
+                query = "UPDATE ROOM SET DATE_DISCHARGED=? WHERE PATIENT_ID=?"
+                cursor.execute(query, (discharge_date, patient_id))
                 conn.commit()
                 tkinter.messagebox.showinfo("HOSPITAL DATABASE SYSTEM", "DISCHARGE DATE UPDATED")
         except sqlite3.Error as e:
@@ -107,12 +108,15 @@ class BillingClass:
                 medicine_quantity = self.medicine_quantity.get()
                 medicine_price = self.medicine_price.get()
 
-                cursor.execute("SELECT * FROM TREATMENT WHERE PATIENT_ID=?", (patient_id,))
+                query = "SELECT * FROM TREATMENT WHERE PATIENT_ID=?"
+                cursor.execute(query, (patient_id,))
                 if cursor.fetchone():
                     tkinter.messagebox.showerror("HOSPITAL DATABASE SYSTEM", "PATIENT ID IS ALREADY REGISTERED")
                 else:
-                    cursor.execute("INSERT INTO TREATMENT VALUES(?,?,?,?)", (patient_id, treatment, treatment_code, treatment_cost))
-                    cursor.execute("INSERT INTO MEDICINE VALUES(?,?,?,?)", (patient_id, medicine, medicine_quantity, medicine_price))
+                    query = "INSERT INTO TREATMENT VALUES(?,?,?,?)"
+                    cursor.execute(query, (patient_id, treatment, treatment_code, treatment_cost))
+                    query = "INSERT INTO MEDICINE VALUES(?,?,?,?)"
+                    cursor.execute(query, (patient_id, medicine, medicine_quantity, medicine_price))
                     conn.commit()
                     tkinter.messagebox.showinfo("HOSPITAL DATABASE SYSTEM", "BILLING DATA SAVED")
         except sqlite3.Error as e:
@@ -123,7 +127,8 @@ class BillingClass:
             with sqlite3.connect("HospitalDB.db") as conn:
                 cursor = conn.cursor()
                 patient_id = self.patient_id.get()
-                cursor.execute("SELECT SUM(T_COST + (M_COST * M_QTY) + (DATE_DISCHARGED - DATE_ADMITTED) * RATE) FROM ROOM NATURAL JOIN TREATMENT NATURAL JOIN MEDICINE WHERE PATIENT_ID=?", (patient_id,))
+                query = "SELECT SUM(T_COST + (M_COST * M_QTY) + (DATE_DISCHARGED - DATE_ADMITTED) * RATE) FROM ROOM NATURAL JOIN TREATMENT NATURAL JOIN MEDICINE WHERE PATIENT_ID=?"
+                cursor.execute(query, (patient_id,))
                 total_amount = cursor.fetchone()[0]
                 if total_amount is None:
                     total_amount = 0

@@ -9,7 +9,7 @@ def main_function():
     root = Tk()
     app = main_window(root)
 
-class Main_Window:
+class MainWindow:
     # constructor
     def __init__(self, master):
         # public data members
@@ -48,14 +48,16 @@ class Main_Window:
     # public member function  
     #Function for LOGIN
     def login_system(self):
-        USERNAME = 'admin'
-        PASSWORD = 'password123'
+        ADMIN_USERNAME = 'admin'
+        ADMIN_PASSWORD = 'password123'
+        ROOT_USERNAME = 'root'
+        ROOT_PASSWORD = 'password123'
         S1 = (self.username.get())
         S2 = (self.password.get())
-        if(S1 == USERNAME and S2 == PASSWORD):
+        if(S1 == ADMIN_USERNAME and S2 == ADMIN_PASSWORD):
             self.new_window = Toplevel(self.master)
             self.app = Menu(self.new_window)
-        elif(S1 == 'root' and S2 == 'password123'):
+        elif(S1 == ROOT_USERNAME and S2 == ROOT_PASSWORD):
             self.new_window = Toplevel(self.master)
             self.app = Menu(self.new_window)
         else:
@@ -64,6 +66,9 @@ class Main_Window:
     #Function for Exit
     def exit_function(self):
         self.master.destroy()
+
+def main_window(root):
+    return MainWindow(root)
 
 if __name__ == "__main__":
     main_function()
