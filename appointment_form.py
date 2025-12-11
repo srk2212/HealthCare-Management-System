@@ -20,7 +20,7 @@ class Appointment:
         self.ap_time = StringVar()
         self.ap_date = StringVar()
         self.des = StringVar()
-siva rama krishna.json
+        
         # ===============TITLE==========
         self.lblTitle = Label(self.frame, text="APPOINTMENT FORM", font=("Helvetica", 20, "bold"), bg="cadet blue")
         self.lblTitle.grid(row=0, column=0, columnspan=2, pady=50)
@@ -50,7 +50,7 @@ siva rama krishna.json
         self.apt_entry = Entry(self.LoginFrame, font=("Helvetica", 14, "bold"), bd=2, textvariable=self.ap_time)
         self.apt_entry.grid(row=0, column=3)
 
-        self.lblapd = Label(self.LoginsivaramakrishnaFrame, text="APPOINTMENT DATE(YYYY-MM-DD)", font=("Helvetica", 14, "bold"), bg="cadet blue", bd=22)
+        self.lblapd = Label(self.LoginFrame, text="APPOINTMENT DATE(YYYY-MM-DD)", font=("Helvetica", 14, "bold"), bg="cadet blue", bd=22)
         self.lblapd.grid(row=1, column=2)
         self.apd_entry = Entry(self.LoginFrame, font=("Helvetica", 14, "bold"), bd=2, textvariable=self.ap_date)
         self.apd_entry.grid(row=1, column=3)
@@ -101,11 +101,11 @@ siva rama krishna.json
         except sqlite3.Error as e:
             tkinter.messagebox.showerror("HOSPITAL DATABASE SYSTEM", str(e))
 
-    def deleteexecute_ap_display(self):
+    def delete_ap_display(self):
         self.newWindow = Toplevel(self.master)
         self.app = DeleteAP(self.newWindow)
 
-  gfetryr  def search_ap_display(self):
+    def search_ap_display(self):
         self.newWindow = Toplevel(self.master)
         self.app = SearchAP(self.newWindow)
 
